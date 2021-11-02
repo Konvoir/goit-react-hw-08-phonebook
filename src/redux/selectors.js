@@ -8,3 +8,4 @@ export const getVisibleContacts = createSelector(
     return items.filter(({ name }) => name.toLowerCase().includes(filter));
   }
 );
+export const getLoading = (state) => state.contacts.loading;

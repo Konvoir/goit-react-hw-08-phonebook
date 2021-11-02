@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact } from '../../redux/operations';
 import s from './Form.module.css';
+import Spiner from '../SpinerLoader/SpinerLoader';
+import { getLoading } from '../../redux/selectors';
 
 export default function Form() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const dispatch = useDispatch();
+    const isLoaded = useSelector(getLoading);
 
     const handleInput = event => {
         const { name, value } = event.currentTarget;
@@ -31,6 +34,8 @@ export default function Form() {
         setName('');
         setNumber('');
     };
+
+    if (isLoaded) { return <Spiner /> }
     
     return (
         <form onSubmit={handleSubmit} className={s.form}>
