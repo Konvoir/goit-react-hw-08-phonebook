@@ -13,4 +13,15 @@ export const deleteContactSuccess = createAction("contacts/deleteSuccess");
 export const deleteContactError = createAction("contacts/deleteError");
 
 // export const deleteContact = createAction("contacts/delete");
-export const filterContacts = createAction("contacts/filterContacts");
+// export const filterContacts = createAction("contacts/filterContacts");
+export const toggleCompletedRequest = createAction(
+  "contacts/toggleCompletedRequest"
+);
+export const toggleCompletedSuccess = createAction(
+  "contacts/toggleCompletedSuccess"
+);
+export const toggleCompletedError = createAction(
+  "contacts/toggleCompletedError"
+);
+
+export const changeFilter = createAction("contacts/changeFilter");

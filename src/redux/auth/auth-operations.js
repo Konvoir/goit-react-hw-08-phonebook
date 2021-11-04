@@ -13,18 +13,77 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk(
-  "auth/registration",
+const register = createAsyncThunk(
+  "auth/register",
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/users/singup", credentials);
       token.set(data.token);
+      // * После успешной регистрации добавляем токен в HTTP-заголовок
       return data;
     } catch (error) {
-      toast.error(`Something wrong ${error}`);
+      toast.error(`Unfortunately, something go wrong! ${error}`);
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
-export const logIn = createAsyncThunk();
+const logIn = createAsyncThunk("auth/login", async (credentials, thunkAPI) => {
+  try {
+    const { data } = await axios.post("/users/login", credentials);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    toast.error(`Unfortunately, something go wrong! ${error}`);
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+const logOut = createAsyncThunk(
+  "auth/logout",
+  async (credentials, thunkAPI) => {
+    try {
+      await axios.post("/users/logout");
+      token.unset();
+      // * После успешного логаута, удаляем токен из HTTP-заголовка
+      // return data;
+    } catch (error) {
+      toast.error(`Unfortunately, something go wrong! ${error}`);
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+//  * 1. Забираем токен из стейта через getState()
+//  * 2. Если токена нет, выходим не выполняя никаких операций
+//  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
+
+const fetchCurrentUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.post("/users/current");
+      // token.set(data.token);
+      return data;
+    } catch (error) {
+      toast.error(`Unfortunately, something go wrong! ${error}`);
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+const operations = {
+  register,
+  logOut,
+  logIn,
+  fetchCurrentUser,
+};
+export default operations;

@@ -35,7 +35,7 @@ export default function App() {
             <LoginView />
           </PublicRoute>
 
-          <Route path="/login" component={LoginView} />
+          {/* <Route path="/login" component={LoginView} /> */}
           <h1>Phonebook</h1>
           <Form />
           <h2>Contacts</h2>

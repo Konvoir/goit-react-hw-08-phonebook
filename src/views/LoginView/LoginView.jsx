@@ -1,31 +1,60 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { authOperations } from '../../redux/auth';
+import {styles} from './LoginView/LoginView.module.css'
 
-1 - 17 ***
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
+export default function LoginView() {
 
-const handleChange = ({ target: { name, value } }) => {
+
+const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-        case 'email':
-            return setEmail(value);
-        case 'password':
-            return setPassword(value);
-        default:
-            return;
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
     }
-};
+  };
 
-const HandleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperation.login({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
-};
+  };
 
-return (
+  return (
     <div>
-        <h1>Login Page</h1>
+      <h1>Страница логина</h1>
 
-        
+      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
+        <label style={styles.label}>
+          Почта
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label style={styles.label}>
+          Пароль
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+        </label>
+
+        <button type="submit">Войти</button>
+      </form>
     </div>
-)
+  );
+}
