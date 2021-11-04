@@ -1,4 +1,4 @@
-import {s} from './HomeView/HomeView.module.css'
+import s from './HomeView.module.css'
 
 const HomeView = () => {
     <div className={s.container}>
