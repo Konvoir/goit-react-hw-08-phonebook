@@ -1,10 +1,8 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterContacts } from '../../redux/actions';
-import { getFilter } from '../../redux/selectors';
+import { filterContacts } from '../../redux/contacts/actions';
+import { getFilter, getLoading } from '../../redux/contacts/selectors';
 import s from './Filter.module.css';
 import Spiner from '../SpinerLoader/SpinerLoader';
-import { getLoading } from '../../redux/selectors';
 
 export default function Filter() {
     const value = useSelector(getFilter);

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContacts, fetchContacts } from '../../redux/operations';
-import { getVisibleContacts, getLoading } from '../../redux/selectors';
+import { deleteContacts, fetchContacts } from '../../redux/contacts/operations';
+import { getVisibleContacts, getLoading } from '../../redux/contacts/selectors';
 import s from './Contacts.module.css';
 import Spiner from '../SpinerLoader/SpinerLoader'
 

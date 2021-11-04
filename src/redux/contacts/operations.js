@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 
 import {
   addContactRequest,
@@ -7,14 +7,14 @@ import {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
-  changeFilter,
+  // changeFilter,
   // toggleCompletedRequest,
   // toggleCompletedSuccess,
   // toggleCompletedError,
   fetchContactsRequest,
   fetchContactsSuccess,
   fetchContactsError,
-} from "../actions";
+} from "./actions";
 
 import {
   addContactAPI,
@@ -22,7 +22,7 @@ import {
   fetchContactsAPI,
 } from "../../services/APIbase";
 
-const fetchContacts = () => async (dispatch) => {
+export const fetchContacts = () => async (dispatch) => {
   dispatch(fetchContactsRequest());
   try {
     const contacts = await fetchContactsAPI();
@@ -32,7 +32,7 @@ const fetchContacts = () => async (dispatch) => {
   }
 };
 
-const addContact = (contact) => async (dispatch) => {
+export const addContact = (contact) => async (dispatch) => {
   dispatch(addContactRequest());
   const gettingData = await fetchContactsAPI();
   if (gettingData) {
@@ -51,7 +51,7 @@ const addContact = (contact) => async (dispatch) => {
   }
 };
 
-const deleteContacts = (id) => async (dispatch) => {
+export const deleteContacts = (id) => async (dispatch) => {
   dispatch(deleteContactRequest());
   try {
     await deleteContactAPI(id);
@@ -72,10 +72,10 @@ const deleteContacts = (id) => async (dispatch) => {
 //     .catch(error => dispatch(toggleCompletedError(error.message)));
 // };
 
-const contactsOperations = {
-  // fetchTodos,
-  addTodo,
-  deleteTodo,
-  toggleCompleted,
-};
-export default contactsOperations;
+// const contactsOperations = {
+//   fetchContacts,
+//   addContact,
+//   deleteContacts,
+//   // toggleCompleted,
+// };
+// export default contactsOperations;

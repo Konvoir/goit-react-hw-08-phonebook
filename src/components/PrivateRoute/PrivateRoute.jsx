@@ -1,7 +1,7 @@
 import { Redirect, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { authSelectors } from '../../redux/auth/authOperations'
-import  route  from '../utils/route/route'
+import authSelectors from '../../redux/auth/authSelectors';
+import route from '../utils/route/route';
 
 export default function PrivateRoute({ children,
     redirectTo = route.homePage,

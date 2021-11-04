@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 import s from './Form.module.css';
 import Spiner from '../SpinerLoader/SpinerLoader';
-import { getLoading } from '../../redux/selectors';
+import { getLoading } from '../../redux/contacts/selectors';
 
 export default function Form() {
     const [name, setName] = useState('');
