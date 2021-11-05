@@ -1,20 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors, authOperations } from '../../redux/auth';
-import defaultAvatar from './default-avatar.png';
-import { styles } from './UserMenu.module.css';
+import { useSelector, useDispatch } from "react-redux";
+import s from "./UserMenu.module.css";
+import { getUserName, getIsAuth } from "../../redux/auth/authSelectors";
+import profile from "../../images/profile.png";
+import Button from "../Button/Button";
+import { userLogOut } from "../../redux/auth/authOperations";
 
 export default function UserMenu() {
-    const dispatch = useDispatch();
-    const name = useSelector(authSelectors.getUsername);
-    const avatar = defaultAvatar;
-
-    return (
-        <div style={styles.container}>
-      <img src={avatar} alt="" width="32" style={styles.avatar} />
-      <span style={styles.name}>Добро пожаловать, {name}</span>
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
-        Выйти
-      </button>
+  const userName = useSelector(getUserName);
+  const isAuth = useSelector(getIsAuth);
+  const dispatch = useDispatch();
+  const onBtnClick = () => dispatch(userLogOut());
+  return (
+    <div className={s.wrapper}>
+      {isAuth && (
+        <div className={s.user}>
+          <img src={profile} alt="profile" className={s.image} />
+          <p className={s.userName}>Hello, {userName}</p>
+        </div>
+      )}
+      <Button type="button" buttonName="Log out" handleClick={onBtnClick} />
     </div>
-    )
+  );
 }

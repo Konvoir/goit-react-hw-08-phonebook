@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  align-items: center;
+  box-shadow: 0 10px 5px rgba(148, 89, 1, 0.25), 0 10px 10px rgba(95, 51, 0, 0.22);
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 200px; 
+  font-size: 14px;
+  background-color: #fce5a7e8;
+
+}
+

@@ -1,0 +1,12 @@
+
+
+.button {
+  max-height: 25px; 
+  background: coral linear-gradient(coral, rgb(241, 60, 14));
+  transition: all .218s ease 0s;
+}
+.button:hover {
+  color: rgb(24,24,24); 
+  background: #f7f7f7 linear-gradient(#aff839, #fbffc1);
+  }
+

@@ -1,0 +1,30 @@
+.wrapper{
+    height: 300px;
+    padding: 80px;
+}
+
+.title{
+    text-align: center;
+ margin-bottom: 10px;
+}
+
+.form{
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.registration {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+:hover.registration {
+  color:coral;
+  font-weight: 600;
+  text-shadow: darksalmon 1;
+  
+}

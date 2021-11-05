@@ -1,0 +1,42 @@
+.header{
+    display: flex;
+    justify-content: space-between;    
+    padding: 15px;
+    background: linear-gradient(to bottom, #ccc, #f7b161); 
+}
+
+.logo{
+    font-size: 20px;
+    font-weight: 700;
+}
+.logoRight{
+    color: coral;
+}
+
+.navList{
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+}
+
+.listItem{
+    font-weight: 700;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+transition: all 250ms;
+}
+
+.link:hover{
+    color: white;
+}
+.activeLink{
+    text-decoration: none;
+    color: coral;
+    text-shadow: chocolate;
+}
+
+
+
